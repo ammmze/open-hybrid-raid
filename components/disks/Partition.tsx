@@ -24,6 +24,7 @@ const StyledPartition = styled.div<PartitionProps>`
     text-align: center;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 `;
 
 export const Partition = ({ size, ...props }: PartitionProps): ReactElement => {

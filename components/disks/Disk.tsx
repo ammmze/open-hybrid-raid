@@ -9,7 +9,7 @@ export type DiskProps = {
 const { publicRuntimeConfig } = getConfig();
 
 const StyledDisk = styled.div`
-    margin: 0.5em;
+    margin: 0.3em;
     background-image: url('${publicRuntimeConfig.basePath}/images/hard-disk-svgrepo-com.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -19,12 +19,15 @@ const StyledDisk = styled.div`
     height: 75px;
     justify-content: center;
     align-items: flex-end;
-    box-sizing: content-box;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
 `;
 
 const DiskLabel = styled.div`
     background-color: #FFFFFF99;
-    padding: 0.3em;
+    padding: 0.3em 0;
     width: 100%;
     text-align: center;
     font-size: 14px;

@@ -8,4 +8,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: sans-serif;
         font-size: 16px;
     }
+    * {
+        box-sizing: border-box;
+    }
 `

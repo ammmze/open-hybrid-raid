@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export type Disk = {
     size: number;
@@ -23,13 +23,25 @@ export type RaidCalculatorResult = {
     arrays: Array[];
 }
 
-export const useRaidCalculator = (): RaidCalculatorResult => {
+export type RaidCalculatorProps = {
+    disks?: number[];
+}
+
+export const useRaidCalculator = (props: RaidCalculatorProps): RaidCalculatorResult => {
     const [disks, setDisks] = useState<number[]>([]);
+
+    useEffect(() => {
+        console.log('replace disks', (props.disks || []).join(','))
+        setDisks(props.disks || []);
+    }, [(props.disks || []).join(',')])
 
     let remaining = [...disks];
     const arrays: Array[] = [];
     do {
         const minSize = Math.min(...remaining);
+        if (minSize <= 0 || !Number.isFinite(minSize)) {
+            break;
+        }
         if (remaining.length >= 3) {
             arrays.push({
                 type: 5,
@@ -55,8 +67,6 @@ export const useRaidCalculator = (): RaidCalculatorResult => {
 
         remaining = remaining.map(size => size - minSize).filter(size => size > 0)
     } while (remaining.length > 0)
-
-    console.log(arrays, remaining);
 
     return {
         disks,

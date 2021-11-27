@@ -26,11 +26,11 @@ export const VolumeGroup = ({ children, arrays }: VolumeGroupProps): ReactElemen
     const unusedSize = arrays.filter(({ type }) => !type).reduce((total, arr) => total + arr.partitionSize, 0);
     return (
         <StyledVolumeGroup>
-            {children}
             <Notes>
                 Volume Group / Hybrid Array<br/>
                 (Usable size: {usableSize / 1000} TB. Protection size: {protectionSize / 1000} TB. Unused: {unusedSize / 1000} TB.)
             </Notes>
+            {children}
         </StyledVolumeGroup>
     )
 }
