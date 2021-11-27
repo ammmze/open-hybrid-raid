@@ -1,4 +1,13 @@
+const isGithubPages = !!process.env.CI;
+
+const basePath = isGithubPages ? '/open-hybrid-raid' : '';
+const assetPrefix = isGithubPages ? '/open-hybrid-raid/' : '/';
+
 module.exports = {
-    basePath: '/open-hybrid-raid',
-    assetPrefix: '/open-hybrid-raid/',
+    basePath,
+    assetPrefix,
+    publicRuntimeConfig: {
+        basePath,
+        assetPrefix,
+    }
 }

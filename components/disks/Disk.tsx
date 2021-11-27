@@ -1,13 +1,16 @@
 import { ComponentPropsWithoutRef, ReactElement } from "react"
 import styled from "styled-components"
+import getConfig from 'next/config';
 
 export type DiskProps = {
     size: number;
 } & ComponentPropsWithoutRef<'div'>
 
+const { publicRuntimeConfig } = getConfig();
+
 const StyledDisk = styled.div`
     margin: 0.5em;
-    background-image: url('/open-hybrid-raid/images/hard-disk-svgrepo-com.svg');
+    background-image: url('${publicRuntimeConfig.basePath}/images/hard-disk-svgrepo-com.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
