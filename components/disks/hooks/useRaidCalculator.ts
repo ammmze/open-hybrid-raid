@@ -31,7 +31,6 @@ export const useRaidCalculator = (props: RaidCalculatorProps): RaidCalculatorRes
     const [disks, setDisks] = useState<number[]>([]);
 
     useEffect(() => {
-        console.log('replace disks', (props.disks || []).join(','))
         setDisks(props.disks || []);
     }, [(props.disks || []).join(',')])
 

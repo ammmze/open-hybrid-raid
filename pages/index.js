@@ -21,9 +21,8 @@ export default function Home() {
   const diskList = disks.map(size => size / 1000).join('~');
   useEffect(() => {
     if (!router.query.disks && diskList.length < 1) return;
-    console.log('replace url', diskList);
     router.replace({
-      pathname: window.location.pathname,
+      pathname: router.pathname,
       query: { ...router.query, disks: diskList }
     }, undefined, { shallow: true });
   }, [diskList]);
